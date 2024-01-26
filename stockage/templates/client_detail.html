@@ -1,0 +1,22 @@
+<!-- templates/gestion_stock/client_detail.html -->
+{% extends 'base.html' %}
+
+{% block title %}Détails du client {{ client.nom }}{% endblock %}
+
+{% block content %}
+    <h2>Détails du client {{ client.nom }}</h2>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th scope="row">Nom</th>
+                <td>{{ client.nom }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Téléphone</th>
+                <td>{{ client.telephone }}</td>
+            </tr>
+           
+        </tbody>
+    </table>
+    <a href="{% url 'client_list' %}" class="btn btn-secondary">Retour à la liste des clients</a>
+{% endblock %}

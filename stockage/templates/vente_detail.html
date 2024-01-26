@@ -1,0 +1,55 @@
+<!-- Dans votre dossier templates/votre_app/detail_vente.html -->
+{% extends 'base.html' %}
+
+{% block title %}Détail de la vente {{ vente.id }}{% endblock %}
+
+{% block content %}
+    <h2>Détail de la vente {{ vente.id }}</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Numéro de vente</th>
+                <th scope="col">Client</th>
+                <th scope="col">Date d'émission</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ vente.id }}</td>
+                <td>{{ vente.client.nom }}</td>
+                <td>{{ vente.date_vente }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Détails des Produits</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Produit</th>
+                <th scope="col">Quantité</th>
+                <th scope="col">Prix Unitaire</th>
+                <th scope="col">Total</th>
+                <th scope="col">Imprimer</th>
+            </tr>
+            <tr>  <th scope="col">Imprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for lignevente in vente.lignevente_set.all %}
+                <tr>
+                    <td>{{ lignevente.produit.nom }}</td>
+                    <td>{{ lignevente.quantite }}</td>
+                    <td>{{ lignevente.produit.prix_unitaire }}</td>
+                    <td>{{ lignevente.total }}</td>
+                    <td>
+                </tr>
+            {% endfor %}
+            <tr>
+            <a class="btn btn-info btn-sm" href="{% url 'generate_vente_pdf' vente.id %}">PDF</a>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- Ajoutez d'autres détails de la vente au besoin -->
+{% endblock %}

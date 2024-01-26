@@ -1,0 +1,20 @@
+<!-- templates/gestion_stock/produit_form.html -->
+{% extends 'base.html' %}
+
+{% block title %}
+    {% if form.instance.pk %}
+        Modifier Produit
+    {% else %}
+        Nouveau Produit
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <h2>{% if form.instance.pk %}Modifier{% else %}Nouveau{% endif %} Produit</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+    </form>
+    <a href="{% url 'produit_list' %}" class="btn btn-secondary mt-2">Retour à la liste des produits</a>
+{% endblock %}

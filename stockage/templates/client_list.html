@@ -1,0 +1,32 @@
+<!-- templates/gestion_stock/client_list.html -->
+{% extends 'base.html' %}
+
+{% block title %}Liste des clients{% endblock %}
+
+{% block content %}
+    <h2>Liste des clients</h2>
+    <a class="btn btn-primary" href="{% url 'client_create' %}">Nouveau client</a>
+    <table class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th scope="col">Nom</th>
+                <th scope="col">Téléphone</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for client in clients %}
+                <tr>
+                    <td>{{ client.nom }}</td>
+                    <td>{{ client.telephone }}</td>
+                   
+                    <td>
+                        <a class="btn btn-info btn-sm" href="{% url 'client_detail' pk=client.pk %}">Détails</a>
+                        <a class="btn btn-warning btn-sm" href="#">Modifier</a>
+                        <a class="btn btn-danger btn-sm" href="#">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

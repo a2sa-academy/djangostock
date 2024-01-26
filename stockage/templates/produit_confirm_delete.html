@@ -1,0 +1,63 @@
+<!-- produit_confirm_delete.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation de Suppression</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .btn-group {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Confirmation de Suppression</h1>
+        <p>Êtes-vous sûr de vouloir supprimer ce produit?</p>
+        <div class="btn-group">
+            <form action="{% url 'produit_delete' produit.pk %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn">Confirmer</button>
+            </form>
+            <br>
+            <a href="{% url 'produit_list' %}" class="btn">Annuler</a>
+        </div>
+    </div>
+</body>
+</html>

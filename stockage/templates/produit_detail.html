@@ -1,0 +1,25 @@
+<!-- templates/gestion_stock/produit_detail.html -->
+{% extends 'base.html' %}
+
+{% block title %}Détails du Produit {{ produit.nom }}{% endblock %}
+
+{% block content %}
+    <h2>Détails du Produit {{ produit.nom }}</h2>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th scope="row">Nom</th>
+                <td>{{ produit.nom }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Prix Unitaire</th>
+                <td>{{ produit.prix_unitaire }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Quantité en Stock</th>
+                <td>{{ produit.quantite_stock }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="{% url 'produit_list' %}" class="btn btn-secondary">Retour à la liste des produits</a>
+{% endblock %}

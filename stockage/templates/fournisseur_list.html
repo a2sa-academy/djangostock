@@ -1,0 +1,32 @@
+<!-- templates/gestion_stock/fournisseur_list.html -->
+{% extends 'base.html' %}
+
+{% block title %}Liste des fournisseurs{% endblock %}
+
+{% block content %}
+    <h2>Liste des fournisseurs</h2>
+    <a class="btn btn-primary" href="{% url 'fournisseur_create' %}">Nouveau fournisseur</a>
+    <table class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th scope="col">Nom</th>
+                <th scope="col">Téléphone</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for fournisseur in fournisseurs %}
+                <tr>
+                    <td>{{ fournisseur.nom }}</td>
+                    <td>{{ fournisseur.telephone }}</td>
+                   
+                    <td>
+                        <a class="btn btn-info btn-sm" href="{% url 'fournisseur_detail' pk=fournisseur.pk %}">Détails</a>
+                        <a class="btn btn-warning btn-sm" href="#">Modifier</a>
+                        <a class="btn btn-danger btn-sm" href="#">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

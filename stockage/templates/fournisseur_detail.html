@@ -1,0 +1,22 @@
+<!-- templates/gestion_stock/fournisseur_detail.html -->
+{% extends 'base.html' %}
+
+{% block title %}Détails du fournisseur {{ fournisseur.nom }}{% endblock %}
+
+{% block content %}
+    <h2>Détails du fournisseur {{ fournisseur.nom }}</h2>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th scope="row">Nom</th>
+                <td>{{ fournisseur.nom }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Téléphone</th>
+                <td>{{ fournisseur.telephone }}</td>
+            </tr>
+           
+        </tbody>
+    </table>
+    <a href="{% url 'fournisseur_list' %}" class="btn btn-secondary">Retour à la liste des fournisseurs</a>
+{% endblock %}

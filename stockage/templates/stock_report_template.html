@@ -1,0 +1,59 @@
+<body>
+<!-- stock_report_template.html -->
+<html>
+<head>
+    <title>Rapport de Stock</title>
+    <head>
+    <title>Rapport de Stock</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #1c88b6;
+        }
+    </style>
+</head>
+</head>
+<body>
+    <h1>Rapport de Stock</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom du Produit</th>
+                <th>Quantité en Stock</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for produit in produits %}
+                <tr>
+                    <td>{{ produit.nom }}</td>
+                    <td>{{ produit.quantite_stock }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+
+</body>
+</html>

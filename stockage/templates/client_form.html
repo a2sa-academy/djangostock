@@ -1,0 +1,20 @@
+<!-- templates/gestion_stock/client_form.html -->
+{% extends 'base.html' %}
+
+{% block title %}
+    {% if form.instance.pk %}
+        Modifier client
+    {% else %}
+        Nouveau client
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <h2>{% if form.instance.pk %}Modifier{% else %}Nouveau{% endif %} client</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+    </form>
+    <a href="{% url 'client_list' %}" class="btn btn-secondary mt-2">Retour à la liste des clients</a>
+{% endblock %}

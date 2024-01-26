@@ -1,0 +1,70 @@
+
+{% extends 'base2.html' %}
+{% load static %} 
+
+{% block content %}
+<body>
+<div class="container mt-4">
+<h1 class="h1">TOP ROOM </h1>
+<p class="p">
+<h2>COMMERCE GENERAL<br>
+VOTRE MEILLEUR PARTENAIRE-ELECTROMENAGER-MOBILIER DE BUREAU
+<br>MATERIEL INFORMATIQUE -MATERIEL DE SECURITE -MATERIEL SCOLAIRE
+</p>
+    <div class="row">
+        <div class="col-md-6"> 
+            <h2 class="mb-4">Facture N°: {{ vente.id }}</h2>
+            <p><strong>Date:</strong> {{ vente.date_vente }}</p>
+            <p><strong>DOIT:</strong> {{ vente.client }}</p>
+        </div>
+        <div class="col-md-6 text-right">
+            <img src="{% static 'img/logo.jpg' %}" alt="Logo" class="img-fluid">
+        </div>
+    </div>
+    
+    <h4 class="mt-4">Les articles</h4>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Produit</th>
+                <th>Quantité</th>
+                <th>Prix Unitaire</th>
+                <th>TOTAL</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for lignevente in vente.lignevente_set.all %}
+                <tr>
+                    <td>{{ lignevente.produit.nom }}</td>
+                    <td >{{ lignevente.quantite }}</td>
+                    <td>{{ lignevente.produit.prix_unitaire }}</td>
+                    <td>{{ lignevente.total }}</td>
+                                      
+                </tr>  
+               
+            {% endfor %}
+
+        </tbody>  
+        
+    </table>
+    <p class="th">TOTAL GENERAL : {{ total_amount }} FCFA</p>
+    <p class="mt-4"><strong>Arrêtée la présente facture à la somme de:</strong> (en lettres) {{ total_amount_in_words }} FRANCS CFA ({{ total_amount }}) FCFA</p>
+    <br><br>
+    <div class="row mt-5">
+        <div class="col-md-6 text-center">
+            <p class="font-weight-bold">
+            Contact & address
+            </p>
+            RCCMINENIM/O1/2019 - NIF : 53306/P&nbsp;&nbsp;Adresse:  NIAMEY NIGER, petit marché RUE DU VOIX<br>
+            Adresse Email : toproom0094@gmail.com&nbsp;&nbsp;CEL : 94 94 22 94
+                
+        </div>
+        <div class="col-md-6 text-center">
+            <p class="font-weight-bold">Coordonnées bancaires</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Signature
+            N°1: COMPTE ECOBANK : 160533711001&nbsp;&nbsp;N°2: COMPTE ORABANK:75958001901-66
+        </div>
+    </div>
+</div>
+</body>
+</html>
+{% endblock %}

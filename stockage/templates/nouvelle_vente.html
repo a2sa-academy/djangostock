@@ -1,0 +1,19 @@
+<!-- templates/invoices/create_invoice.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container container-fluid">
+  <h2>Nouvelle Facture</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <h4>Quantité</h4>
+    {% for produit in produits %}
+      <input type="number" name="quantite" min="1" value=""><br>
+    {% endfor %}
+    <br>
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+  </form>
+  </div>
+{% endblock %}

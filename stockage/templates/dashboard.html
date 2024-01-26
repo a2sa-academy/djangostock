@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+    <h2>Dashboard</h2>
+    <a class="btn btn-danger" href="{% url 'deconnexion' %}">Déconnecté</a><br>
+    <br>
+    <div class="card-deck">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ valeurstock }} FCFA</h5>
+                <p class="card-text">Valeur du Stock </p>
+                <a href="{% url 'produit_list' %}" class="btn btn-primary"> Produits</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ total_ventes }} FCFA</h5>
+                <p class="card-text">Volume de vente</p>
+                <a href="{% url 'vente_list' %}" class="btn btn-success">Liste des ventes</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ valeur_totale_stock }}</h5>
+                <p class="card-text">Etat du Stock</p>
+                <a href="{% url 'produit_list' %}" class="btn btn-warning">Valeur du stock</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

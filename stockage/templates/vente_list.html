@@ -1,0 +1,32 @@
+<!-- templates/gestion_stock/vente_list.html -->
+{% extends 'base.html' %}
+
+{% block title %}Liste des ventes{% endblock %}
+
+{% block content %}
+    <h2>Liste des ventes</h2>
+    <a class="btn btn-primary" href="{% url 'nouvelle_vente' %}">Nouveau vente</a>
+    
+    <table class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th scope="col">Numéro Vente</th>
+                <th scope="col">Client</th>
+                <th scope="col">Date de la vente</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vente in ventes %}
+                <tr>
+                    <td>{{ vente.id }}</td>
+                    <td>{{ vente.client }}</td>
+                    <td>{{ vente.date_vente }}</td>
+                    <td>
+                        <a class="btn btn-info btn-sm" href="{% url 'vente_detail' pk=vente.pk %}">Détails</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

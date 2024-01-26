@@ -1,0 +1,35 @@
+<!-- templates/gestion_stock/produit_list.html -->
+{% extends 'base.html' %}
+
+{% block title %}Liste des Produits{% endblock %}
+
+{% block content %}
+    <h2>Liste des Produits</h2>
+    <a class="btn btn-primary" href="{% url 'produit_create' %}">Nouveau Produit</a><br><br>
+    <!-- Exemple de lien dans un template HTML -->
+    <a class="btn btn-primary" href="{% url 'stock_report_pdf' %}" target="_blank">Télécharger le rapport de stock en PDF</a>    
+    <table class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th scope="col">Nom</th>
+                <th scope="col">Prix Unitaire</th>
+                <th scope="col">Quantité en Stock</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for produit in produits %}
+                <tr>
+                    <td>{{ produit.nom }}</td>
+                    <td>{{ produit.prix_unitaire }}</td>
+                    <td>{{ produit.quantite_stock }}</td>
+                    <td>
+                        <a class="btn btn-info btn-sm" href="{% url 'produit_detail' pk=produit.pk %}">Détails</a>
+                        <a class="btn btn-warning btn-sm" href="{% url 'produit_update' pk=produit.pk %}">Modifier</a>
+                        <a class="btn btn-danger btn-sm" href="{% url 'produit_delete' pk=produit.pk %}">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
